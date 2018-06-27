@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  rtlsdr:
+    container_name: pi_rtlsdr
+    image: mgaggero/alpine-rtl-sdr
+    build:
+        context: ./
+        dockerfile: docker/Dockerfile
+    network_mode: "host"
+    ports:
+     - 1234:1234
+    devices:
+     - "/dev/ttyAMA0:/dev/ttyAMA0"
+       #    volumes:
+       #     - "/dev/ttyAMA0:/dev/ttyAMA0"
+    privileged: true
+    restart: always
+
